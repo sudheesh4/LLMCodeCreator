@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    <!-- import CSS stylesheet -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- display text and images according to the theme -->
+    <h1>Hello, world!</h1>
+    <img src="image1.jpg" alt="Image 1">
+    <p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <!-- add a scrollable container for the content -->
+    <div class="container">
+      <ul id="gallery">
+        <!-- loop through the images and display them with captions -->
+        <li><img src="image2.jpg" alt="Image 2">
+          <p>Image 2</p>
+        </li>
+        <li><img src="image3.jpg" alt="Image 3">
+          <p>Image 3</p>
+        </li>
+        <!-- add more li elements with img and p tags -->
+      </ul>
+    </div>
+    <!-- add a script tag to load the CSS and handle the scroll event -->
+    <script src="script.js"></script>
+    <script>
+      // get the container element
+      const container = document.querySelector(".container");
+      // get the gallery ul element
+      const gallery = document.getElementById("gallery");
+      // set a maximum height for the container
+      container.style.maxHeight = "500px";
+      // add an event listener to the scroll wheel or touch
+      container.addEventListener("wheel", () => {
+        // calculate the current scroll position
+        const scrollPosition = container.scrollTop;
+        // update the gallery's left property based on the scroll position
+        gallery.style.transform = `translateX(${scrollPosition}px)`;
+      });
+    </script>
+  </body>
+</html>
