@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>My Gallery</h1>
+      <p>This is a small website to display some text and images.</p>
+      <button id="prev-btn">Previous</button>
+      <button id="next-btn">Next</button>
+      <div class="gallery">
+        <div class="image-container">
+          <img src="image1.jpg" alt="Square image 1">
+          <div class="buttons">
+            <button onclick="toggleClass('image1', 'active')">
+              <span data-text="Option 1"></span>
+              <span data-text="Option 2"></span>
+            </button>
+          </div>
+        </div>
+        <div class="image-container">
+          <img src="image2.jpg" alt="Square image 2">
+          <div class="buttons">
+            <button onclick="toggleClass('image2', 'active')">
+              <span data-text="Option 1"></span>
+              <span data-text="Option 2"></span>
+            </button>
+          </div>
+        </div>
+        <!-- Add more image containers, up to nine -->
+      </div>
+    </div>
+    <div class="contact">
+      <h2>Contact</h2>
+      <form action="mailto:your-email@example.com" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea><br><br>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,173 @@
+The following files and their contents are my solution:
+
+index.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>My Gallery</h1>
+      <p>This is a small website to display some text and images.</p>
+      <button id="prev-btn">Previous</button>
+      <button id="next-btn">Next</button>
+      <div class="gallery">
+        <div class="image-container">
+          <img src="image1.jpg" alt="Square image 1">
+          <div class="buttons">
+            <button onclick="toggleClass('image1', 'active')">
+              <span data-text="Option 1"></span>
+              <span data-text="Option 2"></span>
+            </button>
+          </div>
+        </div>
+        <div class="image-container">
+          <img src="image2.jpg" alt="Square image 2">
+          <div class="buttons">
+            <button onclick="toggleClass('image2', 'active')">
+              <span data-text="Option 1"></span>
+              <span data-text="Option 2"></span>
+            </button>
+          </div>
+        </div>
+        <!-- Add more image containers, up to nine -->
+      </div>
+    </div>
+    <div class="contact">
+      <h2>Contact</h2>
+      <form action="mailto:your-email@example.com" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea><br><br>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </body>
+</html>
+```
+
+styles.css
+```css
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  display: inline-block;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-container {
+  width: 30%;
+  margin: 10px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.image-container img {
+  cursor: pointer;
+}
+
+.active {
+  transform: scale(1.1);
+}
+
+.contact {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+```
+
+index.js (assuming JavaScript is the main scripting language)
+```javascript
+// Get all the elements by their IDs
+const prevBtn = document.getElementById("prev-btn");
+const nextBtn = document.getElementById("next-btn");
+const galleryContainer = document.getElementById("gallery");
+const contactForm = document.getElementById("contact-form");
+
+// Define an array of image URLs and their active state
+const images = [
+  { url: "image1.jpg", active: false },
+  { url: "image2.jpg", active: false },
+  // Add more image objects, up to nine
+];
+
+// Set the initial active index to 0
+let activeIndex = 0;
+
+// Define a function to toggle the active state of an image
+function toggleClass(elementId, className) {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.classList.toggle(className);
+  }
+}
+
+// Define a function to change the active index when the prev or next button is clicked
+function changeActiveIndex(direction) {
+  activeIndex += direction;
+  // Wrap around the array if the index goes out of bounds
+  if (activeIndex < 0) {
+    activeIndex = images.length - 1;
+  } else if (activeIndex >= images.length) {
+```

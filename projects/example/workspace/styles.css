@@ -1,0 +1,82 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  display: inline-block;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-container {
+  width: 30%;
+  margin: 10px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.image-container img {
+  cursor: pointer;
+}
+
+.active {
+  transform: scale(1.1);
+}
+
+.contact {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
