@@ -17,7 +17,7 @@ from typing import Any, Dict, Optional
 import langchain
 from langchain.schema import  AIMessage, HumanMessage, SystemMessage  ,ChatMessage
 from langchain.chat_models import ChatGooglePalm
-PALM_API="AIzaSyAIzDH7NVopxUvOL8PAqBnKZqdmAoXeS28"
+PALM_API=""
 
 logger = logging.getLogger(__name__)
 
