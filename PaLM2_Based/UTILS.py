@@ -24,7 +24,7 @@ from langchain.chat_models import ChatGooglePalm
 
 ######################################################################################
 
-PALM_API="AIzaSyAIzDH7NVopxUvOL8PAqBnKZqdmAoXeS28"
+PALM_API=""
 
 #################################################################################
 
