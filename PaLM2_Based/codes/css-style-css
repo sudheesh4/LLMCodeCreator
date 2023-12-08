@@ -1,0 +1,28 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+#board {
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.square.x {
+  background-color: #000;
+}
+
+.square.o {
+  background-color: #f00;
+}
+
+.square.empty {
+  background-color: #fff;
+}

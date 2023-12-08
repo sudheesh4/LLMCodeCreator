@@ -1,0 +1,6 @@
+{
+  "index.html": "The main HTML file for the website.",
+  "css/style.css": "The CSS file for the website.",
+  "js/tictactoe.js": "The JavaScript file for the game.",
+  "images/tictactoe.png": "The image for the tic-tac-toe board."
+}

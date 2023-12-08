@@ -1,0 +1,53 @@
+var board = document.getElementById("board");
+var squares = board.getElementsByTagName("div");
+
+var currentPlayer = "X";
+
+function handleClick(square) {
+  if (square.classList.contains("empty")) {
+    square.classList.add(currentPlayer);
+    if (checkWinner()) {
+      alert(currentPlayer + " wins!");
+      return;
+    }
+    if (isGameOver()) {
+      alert("It's a tie!");
+      return;
+    }
+    currentPlayer = (currentPlayer === "X") ? "O" : "X";
+  }
+}
+
+function checkWinner() {
+  for (var i = 0; i < 3; i++) {
+    if (squares[i].classList.contains("X") && squares[i + 3].classList.contains("X") && squares[i + 6].classList.contains("X")) {
+      return true;
+    } else if (squares[i].classList.contains("O") && squares[i + 3].classList.contains("O") && squares[i + 6].classList.contains("O")) {
+      return true;
+    }
+  }
+  if (squares[0].classList.contains("X") && squares[4].classList.contains("X") && squares[8].classList.contains("X")) {
+    return true;
+  } else if (squares[0].classList.contains("O") && squares[4].classList.contains("O") && squares[8].classList.contains("O")) {
+    return true;
+  }
+  if (squares[2].classList.contains("X") && squares[4].classList.contains("X") && squares[6].classList.contains("X")) {
+    return true;
+  } else if (squares[2].classList.contains("O") && squares[4].classList.contains("O") && squares[6].classList.contains("O")) {
+    return true;
+  }
+  return false;
+}
+
+function isGameOver() {
+  for (var i = 0; i < 9; i++) {
+    if (squares[i].classList.contains("X") || squares[i].classList.contains("O")) {
+      return false;
+    }
+  }
+  return true;
+}
+
+for (var i = 0; i < 9; i++) {
+  squares[i].addEventListener("click", handleClick);
+}

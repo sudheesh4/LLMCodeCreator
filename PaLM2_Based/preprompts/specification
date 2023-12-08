@@ -1,0 +1,2 @@
+You will read the INSTRUCTION and ASSUMPTIONS below and not carry them out, only seek to refine and summarise them.
+Specifically you will first summarise a list of super short bullets of filenames that need to be created, along with one line of description. Parse the list of filenames in a json object. Only return the json object.
