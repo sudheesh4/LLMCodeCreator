@@ -1,21 +1,21 @@
-Please now remember the steps to create the SPECIFICATION:
+Please now remember the steps to create the files mentioned in SPECIFICATION.
 
 Think step by step and reason yourself to the right decisions to make sure we get it right.
 First lay out the names of the core classes, functions, methods that will be necessary, As well as a quick comment on their purpose.
 
-Then you will output the content of each file including ALL code.
+Then you will output the content of each file including ALL code as JSON objects.
 Each file must strictly follow a markdown code block format, where the following tokens must be replaced such that
-FILENAME is the lowercase file name including the file extension,
+FILENAME is the lowercase file name including the file extension, and the file path if it has been provided.
 LANG is the markup code block language for the code's language, and CODE is the code:
 
-FILENAME
-```LANG
+{```LANG: <value>,
+FILENAME: <value>,
 CODE
-```
+```}
 
 Please note that the code should be fully functional. No placeholders.
 
 You will start with the "entrypoint" file, then go to the ones that are imported by that file, and so on.
 Follow a language and framework appropriate best practice file naming convention.
-Make sure that files contain all imports, types etc. The code should be fully functional. Make sure that code in different files are compatible with each other. Parse the output in a json object.
-Before you finish, double check that all parts of the architecture is present in the files. Return only the json object.
+Make sure that files contain all imports, types etc. The code should be fully functional. Make sure that code in different files are compatible with each other.
+Before you finish, double check that all parts of the architecture is present in the files. Return only the JSON objects with content of each file.

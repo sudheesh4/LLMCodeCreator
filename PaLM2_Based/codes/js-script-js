@@ -1,0 +1,42 @@
+ `var board = document.getElementById("board");
+    var turn = "X";
+    var message = document.getElementById("message");
+    
+    function squareClick(event) {
+      var square = event.target;
+      if (square.classList.contains("empty")) {
+        square.classList.add(turn);
+        if (turn == "X") {
+          turn = "O";
+        } else {
+          turn = "X";
+        }
+        updateBoard();
+        updateTurn();
+      }
+    }
+    
+    function updateBoard() {
+      for (var i = 0; i < 3; i++) {
+        for (var j = 0; j < 3; j++) {
+          var square = document.getElementById("square" + i + "_" + j);
+          if (square.classList.contains("empty")) {
+            square.classList.add("empty");
+          } else if (square.classList.contains("X")) {
+            square.classList.add("X");
+          } else {
+            square.classList.add("O");
+          }
+        }
+      }
+    }
+    
+    function updateTurn() {
+      message.innerHTML = "Turn: " + turn;
+    }
+    
+    board.addEventListener("click", squareClick);
+    ```
+  },
+  "images/tic-tac-toe-board.png": {
+    

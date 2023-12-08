@@ -1,28 +1,46 @@
-body {
-  font-family: Arial, sans-serif;
-}
-
-#board {
-  width: 500px;
-  height: 500px;
-  border: 1px solid black;
-}
-
-.square {
-  width: 100px;
-  height: 100px;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.square.x {
-  background-color: #000;
-}
-
-.square.o {
-  background-color: #f00;
-}
-
-.square.empty {
-  background-color: #fff;
-}
+ `html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+     #board {
+      width: 500px;
+      height: 500px;
+      border: 1px solid black;
+    }
+    
+     #turn {
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+     #message {
+      font-size: 12px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+     #square {
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+      cursor: pointer;
+    }
+    
+     #square.x {
+      background-color: #000000;
+    }
+    
+     #square.o {
+      background-color: #ffffff;
+    }
+    
+     #square.empty {
+      background-color: #ffffff;
+    }
+    ```
+  },
+  "js/script.js": {
+    

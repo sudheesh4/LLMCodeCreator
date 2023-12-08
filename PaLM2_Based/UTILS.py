@@ -24,7 +24,7 @@ from langchain.chat_models import ChatGooglePalm
 
 ######################################################################################
 
-PALM_API=""
+PALM_API="AIzaSyAIzDH7NVopxUvOL8PAqBnKZqdmAoXeS28"
 
 #################################################################################
 
@@ -62,6 +62,15 @@ def getjson(specify):
             return s
     return None
 
+def getassm(msg):
+    m=msg.split('.')
+    t=''
+    for s in m:
+        if s.find('?')==-1:
+            t +=s
+    return t
+
+
 def parsechat(chat):  
     regex = r"(\S+)\n\s*```[^\n]*\n(.+?)```"
     matches = re.finditer(regex, chat, re.DOTALL)
@@ -83,9 +92,42 @@ def parsechat(chat):
     return files
 
 
-def savetofiles(chat):
+def parser(chat,team):
+    specify=team.specify
+    nms=[]
+    itr=iter(json.loads(specify['result'][5:-1]).keys())
+    while True:
+        try:
+            n=next(itr)
+            nms.append(n)
+        except:
+            break
+    print(nms)
+    summ=chat#[len(chat.split("```")[0]):]
+    #print(summ)
+    #print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+    files=[]
+    for n in nms:
+        try:
+            #print((f'>>>>"FILENAME": \"{n}\"'))
+            #temp=summ.find('"FILENAME": "tictactoe.py"')#.split('"CODE":')[1].split('"LANG":')[0]
+            #print(f"########{temp}")
+            file=summ[summ.find(f'"FILENAME": \"{n}\"'):].split('"CODE":')[1].split('"LANG":')[0]
+            files.append((n,file))
+        except:
+            pass
+
+    readme=chat.split("```")[0]
+    files.append(("README.md", readme+"\n"+specify['result']))
     
-    files=parsechat(chat)
+    return files
+    
+
+
+def savetofiles(team,chat):
+    
+    #files=parsechat(chat)
+    files=parser(chat,team)
     added=[]
     for name,file in files:
         temp=slugify(name)
@@ -143,7 +185,6 @@ class MyAgent:
     
 
 ##################################################################################
-
 class AgentTeam:
     def __init__(self,task):
         self.prompt=task
@@ -153,7 +194,7 @@ class AgentTeam:
     
     
     def run(self):
-        print(f'****{self.prompt}')
+        print(f"!!!!{self.prompt}")
         self.clarification()
         print(f">>>>{self.clarify['result']}")
         self.assumption()
@@ -161,6 +202,7 @@ class AgentTeam:
         self.specification()
         print(f"$$$${self.specify['result']}")
         cod=self.creation()
+        print("<><><><><><><><><><><><><><><>")
         return cod
         
     
@@ -172,11 +214,13 @@ class AgentTeam:
     
     def assumption(self):#create assumptions
         ass=MyAgent("assumption")
-        assprompt=ass.preprompt+'\n INSTRUCTION : '+self.prompt+'\n CLARIFICATION: '+self.clarify['result'] 
+        tempas=input("Answer to some clarifications....")
+        tempas='\nASSUMPTIONS: '+tempas
+        assprompt=ass.preprompt+'\n INSTRUCTION : '+self.prompt+'\n CLARIFICATION: '+self.clarify['result']+tempas
         assume=ass.next([ass.parsemessage("user",assprompt)])
         
         self.assume['prompt'] = assprompt
-        self.assume['result'] = extractmessage(assume)
+        self.assume['result'] = tempas+'\n'+getassm(extractmessage(assume))
         
     def specification(self):#create specifications and return json object
         sp=MyAgent("specification")

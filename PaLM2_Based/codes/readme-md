@@ -1,2 +1,12 @@
-Sure, here is the specification for the tic-tac-toe website:
+Here is the code for the files mentioned in the specification:
 
+
+json
+{
+  "index.html": "The main HTML file for the website.",
+  "css/style.css": "The CSS file for the website.",
+  "js/script.js": "The JavaScript file for the website.",
+  "images/tic-tac-toe-board.png": "The image of the tic-tac-toe board.",
+  "images/x.png": "The image of the X piece.",
+  "images/o.png": "The image of the O piece."
+}
